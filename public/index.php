@@ -12,9 +12,8 @@ require_once (FS_TEMPLATES . 'layout.php');
 
 layout::pageTop();
 
-layout::container($title, $content);
-$title = 'Hello' ;
-$content = 'Goodbye';
+layout::container();
+
 layout::pageBottom();
 
 
