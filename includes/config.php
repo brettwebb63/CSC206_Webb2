@@ -5,7 +5,7 @@
 if (! defined('DB_USER')) define('DB_USER', 'csc206');
 if (! defined('DB_PASS')) define('DB_PASS', 'Geneva2017');
 if (! defined('DB_HOST')) define('DB_HOST', 'localhost');
-if (! defined('DB_NAME')) define('DB_NAME', 'csc206_madeira');
+if (! defined('DB_NAME')) define('DB_NAME', 'csc206');
 
 /**
  * These constants point to various places in the filesystem where you will store certain
@@ -35,7 +35,7 @@ if (! defined('DB_NAME')) define('DB_NAME', 'csc206_madeira');
  * FS_TEMPLATES is defined as FS_ROOT + includes/  OR  C:\xampp\htdocs\templates/
  *
  */
-if (! defined('FS_ROOT')) define('FS_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/');
+if (! defined('FS_ROOT')) define('FS_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/../');
 if (! defined('FS_INCLUDES')) define('FS_INCLUDES',  FS_ROOT.'includes/');
 if (! defined('FS_TEMPLATES')) define('FS_TEMPLATES', FS_ROOT . 'templates/');
 
@@ -54,6 +54,6 @@ if (! defined('FS_TEMPLATES')) define('FS_TEMPLATES', FS_ROOT . 'templates/');
  *
  */
 if (! defined('WS_ROOT')) define('WS_ROOT', '/');
-if (! defined('WS_CSS')) define('WS_CSS', 'assets/css/');
-if (! defined('WS_IMAGES')) define('WS_IMAGES', 'assets/images/');
+if (! defined('WS_CSS')) define('WS_CSS', '/assets/css/');
+if (! defined('WS_IMAGES')) define('WS_IMAGES', '/assets/images/');
 

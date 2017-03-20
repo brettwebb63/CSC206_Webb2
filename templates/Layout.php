@@ -12,6 +12,7 @@ class layout
 
     Public static function pageTop()
     {
+        $IMAGE = WS_IMAGES . 'logo.png';
         echo <<<pageTop
 <!DOCTYPE HTMl>
 <html>
@@ -63,7 +64,7 @@ class layout
 
                         </fieldset>
                     </form>
-                    <h4 align="Right"> Home | About Us | Contact Us! | Our Thanks to You  </h4>
+                    <h4 align="Right"><a href ="index.php"> Home</a> | <a href="createPost.php">Create A Post</a> | <a href ="allPosts.php"> All Posts</a> </h4>
                 </div>
             </div>
             <div class = "col-md-1"></div>
@@ -76,7 +77,7 @@ class layout
     <div class = "row">
         <div class = "col-md-2"></div>
         <div class = "col-md-9">
-            <img src="C:\xampp\htdocs\img\Logo.png" alt="Logo" width="1580" height="100">
+            <img src="$IMAGE" alt="Logo" width="1580" height="100">
         </div>
         <div class = "col-md-1"></div>
     </div>
@@ -147,28 +148,93 @@ pageTop;
                 </div>
         </div>
         </aside>
-
+        
+        <div class="container top25">
         <div class="col-md-6">
-            <body>
-                  <h2> Latest Article </h2>
-            <h4> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h4>
-
-            <h2>Why should you blog?</h2>
-            <h5>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. </h5>
-
-            <h2> What the future holds... </h2>
-            <h5>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</h5>
-            </body>
-        </div>
-
-        <div class="col-md-1"></div>
+            <section class="content">
+                <?php
+                // Loop through the posts and display them
+                while ($post = $posts->fetch()) {
+                    // Call the method to create the layout for a post
+                    News::story($post);
+                }
+                ?>
+</section>
+</div>
 
     </div>
 </container>
 container;
 
     }
+
+    public static function CreatePost()
+    {
+             echo <<< uploadform
+                <form class="form-horizontal">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Create your own post!</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Title</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="textinput" type="text" placeholder="What will your title be? " class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Pen Name</label>
+                        <div class="col-md-6">
+                            <input id="textinput" name="textinput" type="text" placeholder="This name will be displayed to everyone " class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textarea">Content </label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="textarea" name="textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Date Published</label>
+                        <div class="col-md-2">
+                            <input id="textinput" name="textinput" type="text" placeholder="00/00/0000" class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Removal Date</label>
+                        <div class="col-md-2">
+                            <input id="textinput" name="textinput" type="text" placeholder="0000/00/00"  class="form-control input-md">
+
+                        </div>
+                    </div>
+
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <div class="col-md-8">
+                            <button id="button1id" name="button1id" class="btn btn-primary">Post</button>
+                            <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+uploadform;
+}
+
 
 
     Public static function pageBottom()
