@@ -15,16 +15,20 @@
 // Load all application files and configurations
 require($_SERVER[ 'DOCUMENT_ROOT' ] . '/../includes/application_includes.php');
 
+if (! isset($_SESSION['user'])) {
+    header('location: logIn.php');
+}
+else {
 // Generate the HTML for the top of the page
-layout::pageTop();
+    layout::pageTop();
 
 // Get the posts for this page from the database
-$sql = 'select * from users';
-$result = $db->query($sql);
-$users = $result->fetchAll();
+    $sql = 'select * from users';
+    $result = $db->query($sql);
+    $users = $result->fetchAll();
 
 // Page content goes here
-?>
+    ?>
 
     <div class="container top25">
         <div class="col-md-12">
@@ -44,7 +48,8 @@ $users = $result->fetchAll();
         </div>
     </div>
 
-<?php
+    <?php
 
 // Generate the page footer
-Layout::pageBottom();
+    Layout::pageBottom();
+}
