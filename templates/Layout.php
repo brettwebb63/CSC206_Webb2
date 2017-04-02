@@ -42,7 +42,7 @@ class layout
 
     <title> Blog A Lot </title>
 
-    <div style ="background-color: #1B2631">
+    <div style ="background-color: #1B2631; width: 100%;">
         <font color="FDFEFE">
             <div class = "row">
                 <div class = "col-md-1"></div>
@@ -57,14 +57,15 @@ class layout
                             <div class="form-group" align = "right">
                                 <label class="col-md-4 control-label" for="button1id"></label>
                                 <div class="col-md-8">
-                                    <button id="button1id" name="button1id" class="btn btn-lg btn-primary">Log in</button>
-                                    <button id="button2id" name="button2id" class="btn btn-lg btn-danger" >Sign Up</button>
+                                    <a href = "logIn.php" button id="button1id" name="button1id" class="btn btn-lg btn-primary">Log in</a></button>
+                                    <a href = "signUp.php" button id="button2id" name="button2id" class="btn btn-lg btn-danger" >Sign Up</a></button>
+                                    <a href = "logout.php" button id="button3id" name="button3id" class="btn btn-lg btn-danger" >Log out</a></button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
-                    <h4 align="Right"><a href ="index.php"> Home</a> | <a href="createPost.php">Create A Post</a> | <a href ="allPosts.php"> All Posts</a> </h4>
+                    <h4 align="Right"><a href ="index.php"> Home</a> | <a href="createPost.php">Create A Post</a> | <a href ="allPosts.php"> All Posts</a> | <a href ="allUsers.php"> All Users</a> </h4>
                 </div>
             </div>
             <div class = "col-md-1"></div>
@@ -75,6 +76,7 @@ class layout
 
 <navbar>
     <div class = "row">
+    
         <div class = "col-md-2"></div>
         <div class = "col-md-9">
             <img src="$IMAGE" alt="Logo" width="1580" height="100">
@@ -84,6 +86,11 @@ class layout
 </navbar>
 pageTop;
     }
+
+
+
+
+
 
     Public Static function container()
     {
@@ -99,7 +106,7 @@ pageTop;
 
                 <div style ="background-color: #37474F">
                     <font color="#f0ffff">
-                        <div style="height:50px"></div>
+                        
                         <form class="form-horizontal">
 
                             <fieldset>
@@ -146,116 +153,434 @@ pageTop;
                         <div style="height:50px"></div>
                     </font>
                 </div>
+            </aside>
         </div>
-        </aside>
+        
         
         <div class="container top25">
         <div class="col-md-6">
             <section class="content">
+               
                 <?php
+                
                 // Loop through the posts and display them
                 while ($post = $posts->fetch()) {
                     // Call the method to create the layout for a post
                     News::story($post);
                 }
                 ?>
-</section>
-</div>
+            </section>
+            </div>
 
     </div>
 </container>
 container;
-
     }
 
-    public static function CreatePost()
+
+
+
+
+
+    public static function CreatePost($title,$content,$startDate,$endDate,$image)
     {
-             echo <<< uploadform
-                <form class="form-horizontal">
+        echo <<<postform
+            <form id="createPostForm" action='createPost.php' method="POST" class="form-horizontal">
                 <fieldset>
-
+            
                     <!-- Form Name -->
-                    <legend>Create your own post!</legend>
-
+                    <legend>Create Post</legend>
+            
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Title</label>
-                        <div class="col-md-6">
-                            <input id="textinput" name="textinput" type="text" placeholder="What will your title be? " class="form-control input-md">
-
+                        <label class="col-md-3 control-label" for="title">Title</label>
+                        <div class="col-md-8">
+                            <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" required="">                    
                         </div>
                     </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Pen Name</label>
-                        <div class="col-md-6">
-                            <input id="textinput" name="textinput" type="text" placeholder="This name will be displayed to everyone " class="form-control input-md">
-
-                        </div>
-                    </div>
-
+            
                     <!-- Textarea -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textarea">Content </label>
-                        <div class="col-md-4">
-                            <textarea class="form-control" id="textarea" name="textarea"></textarea>
+                        <label class="col-md-3 control-label" for="content">Content</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="content" name="content">$content</textarea>
                         </div>
                     </div>
-
+            
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Date Published</label>
-                        <div class="col-md-2">
-                            <input id="textinput" name="textinput" type="text" placeholder="00/00/0000" class="form-control input-md">
-
+                        <label class="col-md-3 control-label" for="startDate">Effective Date</label>
+                        <div class="col-md-8">
+                            <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" required="">
                         </div>
                     </div>
-
+            
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="textinput">Removal Date</label>
-                        <div class="col-md-2">
-                            <input id="textinput" name="textinput" type="text" placeholder="0000/00/00"  class="form-control input-md">
-
+                        <label class="col-md-3 control-label" for="endDate">End Date</label>
+                        <div class="col-md-8">
+                            <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md">
                         </div>
                     </div>
-
+            
+                    <!-- File Button -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="image">Image Upload</label>
+                        <div class="col-md-8">
+                            <input id="image" name="image" class="input-file" value="$image" type="file">
+                        </div>
+                    </div>
+            
                     <!-- Button (Double) -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <label class="col-md-3 control-label" for="submit"></label>
                         <div class="col-md-8">
-                            <button id="button1id" name="button1id" class="btn btn-primary">Post</button>
-                            <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+                            <button id="submit" name="submit" value="Submit" class="btn btn-success">Submit</button>
+                            <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-info">Cancel</a></button>
                         </div>
                     </div>
-
+            
                 </fieldset>
             </form>
-uploadform;
+postform;
 }
 
 
 
-    Public static function pageBottom()
-    {
-        echo <<< pageBottem
-<footer>
-    <div style ="background-color: #1B2631">
-        <font color="FDFEFE">
-            <div class = "row">
-                <div class="col-md-1"> </div>
-                <div class = "col-md-10">
-                    <h3 align = "center "> Copy right info | Company Name | Contact info | Last Updated On: February 1, 2017 </h3>
-                </div>
-                <div class="col-md-1"> </div>
-            </div>
-        </font>
-    </div>
-</footer>
-</html>
 
-pageBottem;
+
+
+    Public static function updatePost($id, $title, $content, $startDate, $endDate, $image)
+    {
+        echo<<< updatePostPage
+            <form id="createPostForm" action='updatePosts.php' method="POST" class="form-horizontal">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Update Post</legend>
+                     <input type="hidden" name="id" value=$id>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="title">Title</label>
+                            <div class="col-md-8">
+                                <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" required="">
+                            </div>
+                        </div>
+                        <!-- Textarea -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="content">Content</label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" id="content" name="content">$content</textarea>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="startDate">Effective Date</label>
+                            <div class="col-md-8">
+                                <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" required="">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="endDate">End Date</label>
+                            <div class="col-md-8">
+                                <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md">
+                            </div>
+                        </div>
+                        <!-- File Button
+                            <div class="form-group">
+                            <label class="col-md-3 control-label" for="image">Image Upload</label>
+                            <div class="col-md-8">
+                                <input id="image" name="image" class="input-file" value="$image" type="file">
+                            </div>
+                        </div>
+                            -->
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="submit"></label>
+                            <div class="col-md-8">
+                                <button id="submit" name="submit" value="Submit" class="btn btn-success">Submit</button>
+                                <button id="cancel" name="cancel" value="Cancel" class="btn btn-info">Cancel</button>
+                            </div>
+                        </div>
+                </fieldset>
+            </form>
+updatePostPage;
+    }
+
+
+
+
+
+
+    Public static function pageBottom(){
+        echo <<< pageBottom
+            <footer>
+                <div style ="background-color: #1B2631; padding-top: 10px; padding-bottom: 0px; bottom: 0; left: 0; width: 100%;">
+                    <font color="FDFEFE">
+                    
+                        <div class = "row">
+                            <div class="col-md-1"> </div>
+                            <div class = "col-md-10">
+                                <h3 align = "center "> Copy right info | Company Name | Contact info | Last Updated On: February 1, 2017 </h3>
+                            </div>
+                            <div class="col-md-1"> </div>
+                        </div>
+                    </font>
+                </div>
+            </div>
+        </html>
+
+pageBottom;
+    }
+
+
+
+
+
+
+    Public static function signUp($email, $password, $firstName, $lastName, $address1){
+
+    echo <<< signUpForm
+        
+             <form id="signUpForm" action='signUp.php' method="POST" class="form-horizontal">
+                <fieldset>
+                
+                    <!-- Form Name -->
+                    <legend>Sign Up!</legend>
+                    
+                      <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="email">Email :</label>  
+                      <div class="col-md-5">
+                      <input id="email" name="email" type="text" placeholder="someone@email.com" value="$email" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="firstName">First Name :</label>  
+                      <div class="col-md-5">
+                      <input id="firstName" name="firstName" type="text" placeholder="Enter your first name." value="$firstName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="lastName">Last Name :</label>  
+                      <div class="col-md-5">
+                      <input id="lastName" name="lastName" type="text" placeholder="Enter your first name." value="$lastName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="address1">Address :</label>  
+                      <div class="col-md-5">
+                      <input id="address1" name="address1" type="text" placeholder="Enter your address." value="$address1"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="password">Password :</label>  
+                      <div class="col-md-5">
+                      <input id="password" name="password" type="password" placeholder="Enter your password. 6 to 16 characters." value="$password" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                   
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="submit"></label>
+                      <div class="col-md-8">
+                        <button id="submit" name="submit" value="Submit" class="btn btn-success">Sign Up</button>
+                        <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-danger">Cancel</a></button>
+                      </div>
+                    </div>
+                
+                </fieldset>
+            </form>
+
+signUpForm;
+}
+
+
+
+
+
+    Public static function updateUser($id, $email, $firstName, $lastName, $address1, $password){
+
+        echo <<< updateUserForm
+        
+             <form id="updateUsersForm" action='updateUsers.php' method="POST" class="form-horizontal">
+                <fieldset>
+                
+                    <!-- Form Name -->
+                    <legend>Update User Information!</legend>
+                    <input type="hidden" name="id" value=$id>
+                      <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="email">Email :</label>  
+                      <div class="col-md-5">
+                      <input id="email" name="email" type="text" placeholder="someone@email.com" value="$email" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="firstName">First Name :</label>  
+                      <div class="col-md-5">
+                      <input id="firstName" name="firstName" type="text" placeholder="Enter your first name." value="$firstName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="lastName">Last Name :</label>  
+                      <div class="col-md-5">
+                      <input id="lastName" name="lastName" type="text" placeholder="Enter your first name." value="$lastName"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                      <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="address1">Address :</label>  
+                      <div class="col-md-5">
+                      <input id="address1" name="address1" type="text" placeholder="Enter your address." value="$address1"  class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="password">Password :</label>  
+                      <div class="col-md-5">
+                      <input id="password" name="password" type="text" placeholder="Enter your password. 6 to 16 characters." value="$password" class="form-control input-md" required="">
+                        
+                      </div>
+                    </div>
+                   
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="submit"></label>
+                      <div class="col-md-8">
+                        <button id="submit" name="submit" value="Submit" class="btn btn-success">Update</button>
+                        <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-danger">Cancel</a></button>
+                      </div>
+                    </div>
+                
+                </fieldset>
+            </form>
+
+updateUserForm;
+    }
+
+
+
+
+
+
+    Public static function viewForm($id, $title, $content, $startDate, $endDate){
+        echo <<<viewform
+            
+    <form id="createPostForm" action='updatePosts.php' method="POST" class="form-horizontal">
+        <fieldset>
+            <input type="hidden" name="id" value=$id">
+            <input type="hidden" name="title" value=$title">
+            <input type="hidden" name="content" value=$content">
+            <input type="hidden" name="startDate" value=$startDate">
+            <input type="hidden" name="endDate" value=$endDate">
+    
+            <!-- Form Name -->
+            <legend>View your post below!</legend>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="title">Title</label>
+                <div class="col-md-8">
+                    <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" readonly required="">                    
+                </div>
+            </div>
+    
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="content">Content</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" id="content" name="content" readonly>$content</textarea>
+                </div>
+            </div>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="startDate">Effective Date</label>
+                <div class="col-md-8">
+                    <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" readonly required="">
+                </div>
+            </div>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="endDate">End Date</label>
+                <div class="col-md-8">
+                    <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md" readonly>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+viewform;
+    }
+
+
+
+
+
+
+    Public static function loginform(){
+        echo<<<loginform
+    <form id="logInForm" action='logIn.php' method="POST" class="form-horizontal">
+        <fieldset>
+        
+            <!-- Form Name -->
+            <legend>Log in</legend>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="email">Email :</label>  
+              <div class="col-md-4">
+              <input id="email" name="email" type="text" placeholder="someone@email.com" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="password">Password :</label>  
+              <div class="col-md-4">
+              <input id="password" name="password" type="password" placeholder="purplerainbowmonkeybutterflies" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+            
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="button1id"></label>
+              <div class="col-md-8">
+                <button id="button1id" name="button1id" class="btn btn-success">Log-in</button>
+                <a href= "index.php" button id="button2id" name="button2id" class="btn btn-danger">Cancel</a></button>
+              </div>
+            </div>
+        
+        </fieldset>
+    </form>
+loginform;
+
     }
 }
 

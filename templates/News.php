@@ -28,11 +28,13 @@ class news
     {
         $title = $data['title'];
         $content = $data['content'];
+        $startdate = $data{'startDate'};
+
         // $author = $data['firstname'] . ' ' . $data['lastname'];
         echo <<<story
         <div class="top10">
             <h3>$title</h3>
-            <h5>Display from  sometime until some other time</h5>
+            <h5> Posted on $startdate </h5>
             <p>$content</p>
         </div>        
 story;
@@ -84,6 +86,20 @@ story;
         }
 
         $rowHTML .= '<td><a href="updatePosts.php?id='.$id.'">Update </a> | <a href="viewPosts.php?id='.$id.'"> View </a> | <a href="delete.php?id='.$id.'">Delete</a></td>';
+        $rowHTML .= '</tr>';
+        return $rowHTML;
+    }
+    public static function updateTableRow($row)
+    {
+        // Loop through each cell to build a row of data
+        $rowHTML = '<tr>';
+        // Loop through each cell and create the cells
+        foreach ( $row as $key => $cell ) {
+            if($key == 'id') {$id=$cell;}
+            $rowHTML .= '<td>' . $cell . '</td>';
+        }
+
+        $rowHTML .= '<td><a href="updateUsers.php?id='.$id.'">Update </a> | <a href="viewPosts.php?id='.$id.'"> View </a> | <a href="deleteUser.php?id='.$id.'">Delete</a></td>';
         $rowHTML .= '</tr>';
         return $rowHTML;
     }

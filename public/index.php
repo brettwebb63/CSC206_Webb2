@@ -2,11 +2,6 @@
 
 require ($_SERVER[ 'DOCUMENT_ROOT'] . "/../includes/application_includes.php");
 
-require_once (FS_TEMPLATES . 'layout.php');
-require_once(FS_TEMPLATES . 'News.php');
-
-// Connect to the database
-$db = new Database(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 // Get the stories for column 1 from the database
 $sql = 'select * from posts';
 $posts = $db->query($sql);
@@ -82,6 +77,7 @@ layout::pageTop();
             <div class="col-md-6">
                 <section class="content">
                     <?php
+
                     // Loop through the posts and display them
                     while ($post = $posts->fetch()) {
                         // Call the method to create the layout for a post

@@ -2,6 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: Brett
+ * Date: 4/1/2017
+ * Time: 6:42 PM
+ */
+/**
+ * Created by PhpStorm.
+ * User: Brett
  * Date: 3/16/2017
  * Time: 6:07 PM
  */
@@ -13,9 +19,9 @@ require($_SERVER[ 'DOCUMENT_ROOT' ] . '/../includes/application_includes.php');
 layout::pageTop();
 
 // Get the posts for this page from the database
-$sql = 'select * from posts';
+$sql = 'select * from users';
 $result = $db->query($sql);
-$posts = $result->fetchAll();
+$users = $result->fetchAll();
 
 // Page content goes here
 ?>
@@ -25,11 +31,11 @@ $posts = $result->fetchAll();
             <section class="content">
                 <?php
                 // Create the table Header
-                echo News::buildTableHeader($posts);
+                echo News::buildTableHeader($users);
                 // Fill data table
-                foreach ($posts as $post) {
-                    $post['content'] = substr($post['content'], 0, 35) . '...';
-                    echo News::buildTableRow($post);
+                foreach ($users as $post) {
+                    $post['password'] = substr($post['password'], 0, 5) . '...';
+                    echo News::updateTableRow($post);
                 }
                 // Close the table
                 echo News::closeTable();
@@ -42,4 +48,3 @@ $posts = $result->fetchAll();
 
 // Generate the page footer
 Layout::pageBottom();
-

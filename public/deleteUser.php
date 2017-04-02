@@ -2,6 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: Brett
+ * Date: 4/1/2017
+ * Time: 8:04 PM
+ */
+
+/**
+ * Created by PhpStorm.
+ * User: Brett
  * Date: 3/16/2017
  * Time: 7:13 PM
  */
@@ -17,13 +24,9 @@ Layout::pageTop();
 if ( $requestType == 'GET' ) {
 
     // use sql to get the post with id = 39
-    $sql = 'delete from posts where id = ' . $_GET['id'];//delete
+    $sql = 'delete from users where id = ' . $_GET['id'];//delete
     $result = $db->query($sql);
 }
 
 //redirect them to the home page
 header('Location: index.php');
-
-
-
-
