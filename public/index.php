@@ -14,7 +14,7 @@ $res = $db->query($sql);
 layout::pageTop();
 ?>
 
-
+<container>
     <div class="row">
 
         <div class="col-md-1"></div>
@@ -23,13 +23,13 @@ layout::pageTop();
 
             <aside>
 
-                <div style ="background-color: #37474F">
+                <div style ="background-color: #37474F;">
                     <font color="#f0ffff">
-                        <div style="height:50px"></div>
+
                         <form class="form-horizontal">
 
                             <fieldset>
-
+                                <div style="height"></div>
                                 <!-- Search input-->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="searchinput">Search Input</label>
@@ -72,10 +72,14 @@ layout::pageTop();
                         <div style="height:50px"></div>
                     </font>
                 </div>
+            </aside>
         </div>
+
+
         <div class="container top25">
             <div class="col-md-6">
                 <section class="content">
+
                     <?php
 
                     // Loop through the posts and display them
@@ -86,16 +90,15 @@ layout::pageTop();
                     ?>
                 </section>
             </div>
-        </aside>
-
-
 
         </div>
+</container>
 
-
-?>
-        <?php
+<?php
 layout::pageBottom();
+?>
+
+
 
 
 

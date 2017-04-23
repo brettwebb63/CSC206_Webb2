@@ -23,6 +23,7 @@ else {
     layout::pageTop();
 
 // Get the posts for this page from the database
+    //id, firstName, lastName, address1, password, email, created_at, updated_at
     $sql = 'select * from users';
     $result = $db->query($sql);
     $users = $result->fetchAll();
@@ -38,7 +39,7 @@ else {
                 echo News::buildTableHeader($users);
                 // Fill data table
                 foreach ($users as $post) {
-                    $post['password'] = substr($post['password'], 0, 5) . '...';
+                    $post['password'] = substr($post['password'], 0, 10) . '...';
                     echo News::updateTableRow($post);
                 }
                 // Close the table

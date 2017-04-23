@@ -12,14 +12,20 @@ class layout
 
     Public static function pageTop()
     {
+        $topBar = WS_IMAGES . 'metal-texture.jpg';
         $IMAGE = WS_IMAGES . 'logo.png';
         echo <<<pageTop
 <!DOCTYPE HTMl>
 <html>
 <html lang="en" xmlns:height="http://www.w3.org/1999/xhtml">
 
-<head>
 
+<header>
+    <style type="text/css">
+        header{
+            background-color: #1f3c52;
+        }
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,13 +47,14 @@ class layout
     <![endif]-->
 
     <title> Blog A Lot </title>
-
-    <div style ="background-color: #1B2631; width: 100%;">
+    
+    
+    
         <font color="FDFEFE">
             <div class = "row">
+                
                 <div class = "col-md-1"></div>
                 <div class ="col-md-4">
-
                 </div>
 
                 <div class = "col-md-6">
@@ -58,32 +65,32 @@ class layout
                                 <label class="col-md-4 control-label" for="button1id"></label>
                                 <div class="col-md-8">
                                     <a href = "logIn.php" button id="button1id" name="button1id" class="btn btn-lg btn-primary">Log in</a></button>
-                                    <a href = "signUp.php" button id="button2id" name="button2id" class="btn btn-lg btn-danger" >Sign Up</a></button>
+                                    <a href = "signUp.php" button id="button2id" name="button2id" class="btn btn-lg btn-success" >Sign Up</a></button>
                                     <a href = "logout.php" button id="button3id" name="button3id" class="btn btn-lg btn-danger" >Log out</a></button>
                                 </div>
                             </div>
 
                         </fieldset>
                     </form>
-                    <h4 align="Right"><a href ="index.php"> Home</a> | <a href="createPost.php">Create A Post</a> | <a href ="allPosts.php"> All Posts</a> | <a href ="allUsers.php"> All Users</a> </h4>
+                    <h4 align="Right"><a href ="index.php"> Home</a> | <a href="createPost.php">Create A Post</a> | <a href ="allPosts.php"> All Posts</a> | <a href = "uploadImage.php"> Upload Images </a> |<a href ="allUsers.php"> All Users</a> </h4> 
                 </div>
+                
             </div>
             <div class = "col-md-1"></div>
         </font>
     </div>
-    </div>
-</head>
-
-<navbar>
-    <div class = "row">
     
-        <div class = "col-md-2"></div>
-        <div class = "col-md-9">
-            <img src="$IMAGE" alt="Logo" width="1580" height="100">
+</header>
+
+<nav>
+    <div class = "row">
+        
+        <div class = "col-md-12">
+            <img src="$IMAGE" alt="Logo" width="1400" height="100">
         </div>
-        <div class = "col-md-1"></div>
+        
     </div>
-</navbar>
+</nav>
 pageTop;
     }
 
@@ -96,82 +103,89 @@ pageTop;
     {
         echo <<<container
 <container>
+
     <div class="row">
 
         <div class="col-md-1"></div>
 
-        <div class="col-md-4">
-
             <aside>
-
-                <div style ="background-color: #37474F">
-                    <font color="#f0ffff">
-                        
-                        <form class="form-horizontal">
-
-                            <fieldset>
-
-                                <!-- Search input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="searchinput">Search Input</label>
-                                    <div class="col-md-6">
-                                        <input id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md">
-
+                
+                <div class="col-md-4">
+                <style type="text/css">
+                    aside{
+                        background-color: #1f3c52;
+                        height: 500px;
+                    }
+                </style>
+                    
+                    
+                        <font color="#f0ffff">
+                            
+                            <form class="form-horizontal">
+    
+                                <fieldset>
+                                 <!-- Search input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="searchinput">Search Input</label>
+                                        <div class="col-md-6">
+                                            <input id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md">
+    
+                                        </div>
                                     </div>
-                                </div>
-
-                            </fieldset>
-                        </form>
-
-
-                        <h3 align = "center "> Our top 5 Suggestions  </h3>
-                        <h5 align = "center "><a href="">Kronovi</a></h5>
-                        <h5 align = "center "><a href="">Marky</a></h5>
-                        <h5 align = "center "><a href="">Lachino</a></h5>
-                        <h5 align = "center "><a href="">Gambit</a></h5>
-                        <h5 align = "center "><a href=<"">M1K3</a></h5>
-
-                        <h3 align="center"> Top 5 Blogs voted by you </h3>
-                        <h5 align="center"><a href=""> Dogs really are better than cats!</a></h5>
-                        <h5 align="center"><a href="">Patriots or Falcons?</a></h5>
-                        <h5 align="center"><a href="">Pc or console? Which console if so?</a> </h5>
-                        <h5 align="center"><a href="">How I trained my beta fish.</a></h5>
-                        <h5 align="center"><a href="">Build a PC or by one?</a></h5>
-
-                        <h3 align="center">Have suggestions? Tell us!</h3>
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <!-- Textarea -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textarea"></label>
-                                    <div class="col-md-4">
-                                        <textarea class="form-control" id="textarea" name="textarea">default text</textarea>
+    
+                                </fieldset>
+                            </form>
+    
+    
+                            <h3 align = "center "> Our top 5 Suggestions  </h3>
+                            <h5 align = "center "><a href="">Kronovi</a></h5>
+                            <h5 align = "center "><a href="">Marky</a></h5>
+                            <h5 align = "center "><a href="">Lachino</a></h5>
+                            <h5 align = "center "><a href="">Gambit</a></h5>
+                            <h5 align = "center "><a href=<"">M1K3</a></h5>
+    
+                            <h3 align="center"> Top 5 Blogs voted by you </h3>
+                            <h5 align="center"><a href=""> Dogs really are better than cats!</a></h5>
+                            <h5 align="center"><a href="">Patriots or Falcons?</a></h5>
+                            <h5 align="center"><a href="">Pc or console? Which console if so?</a> </h5>
+                            <h5 align="center"><a href="">How I trained my beta fish.</a></h5>
+                            <h5 align="center"><a href="">Build a PC or by one?</a></h5>
+    
+                            <h3 align="center">Have suggestions? Tell us!</h3>
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- Textarea -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textarea"></label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" id="textarea" name="textarea">default text</textarea>
+                                        </div>
                                     </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <div style="height:50px"></div>
-                    </font>
+                                </fieldset>
+                            </form>
+                        </font>
+                    
                 </div>
             </aside>
-        </div>
+       
         
         
         <div class="container top25">
         <div class="col-md-6">
-            <section class="content">
-               
-                <?php
-                
-                // Loop through the posts and display them
-                while ($post = $posts->fetch()) {
-                    // Call the method to create the layout for a post
-                    News::story($post);
-                }
-                ?>
-            </section>
-            </div>
-
+        
+                <section class="content">
+                   
+                    <?php
+                    
+                    // Loop through the posts and display them
+                    while ($post = $posts->fetch()) {
+                        // Call the method to create the layout for a post
+                        News::story($post);
+                    }
+                    ?>
+                </section>
+        </div>
+        </div>
     </div>
 </container>
 container;
@@ -253,55 +267,59 @@ postform;
     Public static function updatePost($id, $title, $content, $startDate, $endDate, $image)
     {
         echo<<< updatePostPage
-            <form id="createPostForm" action='updatePosts.php' method="POST" class="form-horizontal">
+            <form id="updatePostsForm" action='updatePosts.php' method="POST" class="form-horizontal">
                 <fieldset>
                     <!-- Form Name -->
                     <legend>Update Post</legend>
                      <input type="hidden" name="id" value=$id>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="title">Title</label>
-                            <div class="col-md-8">
-                                <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" required="">
-                            </div>
+                       <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="title">Title</label>
+                        <div class="col-md-8">
+                            <input id="title" name="title" type="text" placeholder="post title" value="$title" class="form-control input-md" required="">                    
                         </div>
-                        <!-- Textarea -->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="content">Content</label>
-                            <div class="col-md-8">
-                                <textarea class="form-control" id="content" name="content">$content</textarea>
-                            </div>
+                    </div>
+            
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="content">Content</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="content" name="content">$content</textarea>
                         </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="startDate">Effective Date</label>
-                            <div class="col-md-8">
-                                <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" required="">
-                            </div>
+                    </div>
+            
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="startDate">Effective Date</label>
+                        <div class="col-md-8">
+                            <input id="startDate" name="startDate" type="text" placeholder="effective date" value="$startDate" class="form-control input-md" required="">
                         </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="endDate">End Date</label>
-                            <div class="col-md-8">
-                                <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md">
-                            </div>
+                    </div>
+            
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="endDate">End Date</label>
+                        <div class="col-md-8">
+                            <input id="endDate" name="endDate" type="text" placeholder="end date" value="$endDate" class="form-control input-md">
                         </div>
-                        <!-- File Button
-                            <div class="form-group">
-                            <label class="col-md-3 control-label" for="image">Image Upload</label>
-                            <div class="col-md-8">
-                                <input id="image" name="image" class="input-file" value="$image" type="file">
-                            </div>
+                    </div>
+            
+                    <!-- File Button -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="image">Image Upload</label>
+                        <div class="col-md-8">
+                            <input id="image" name="image" class="input-file" value="$image" type="file">
                         </div>
-                            -->
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="submit"></label>
-                            <div class="col-md-8">
-                                <button id="submit" name="submit" value="Submit" class="btn btn-success">Submit</button>
-                                <button id="cancel" name="cancel" value="Cancel" class="btn btn-info">Cancel</button>
-                            </div>
+                    </div>
+            
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="submit"></label>
+                        <div class="col-md-8">
+                            <button id="submit" name="submit" value="Submit" class="btn btn-success">Submit</button>
+                            <a href = "index.php" button id="cancel" name="cancel" value="Cancel" class="btn btn-info">Cancel</a></button>
                         </div>
+                    </div>
                 </fieldset>
             </form>
 updatePostPage;
@@ -315,13 +333,13 @@ updatePostPage;
     Public static function pageBottom(){
         echo <<< pageBottom
             <footer>
-                <div style ="background-color: #1B2631; padding-top: 10px; padding-bottom: 0px; bottom: 0; left: 0; width: 100%;">
+                <div style ="background-color: #1B2631"; padding-top: 10px; padding-bottom: 0px; bottom: 0; left: 0;>
                     <font color="FDFEFE">
                     
                         <div class = "row">
                             <div class="col-md-1"> </div>
                             <div class = "col-md-10">
-                                <h3 align = "center "> Copy right info | Company Name | Contact info | Last Updated On: February 1, 2017 </h3>
+                                <h3 align = "center "> Copy right info | Company Name | <a href= "contactPage.php"> Contact info </a> | Last Updated On: February 1, 2017 </h3>
                             </div>
                             <div class="col-md-1"> </div>
                         </div>

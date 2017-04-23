@@ -32,7 +32,7 @@ else {
                 echo News::buildTableHeader($posts);
                 // Fill data table
                 foreach ($posts as $post) {
-                    $post['content'] = substr($post['content'], 0, 35) . '...';
+                    $post['content'] = substr($post['content'], 0, 50) . '...';
                     echo News::buildTableRow($post);
                 }
                 // Close the table

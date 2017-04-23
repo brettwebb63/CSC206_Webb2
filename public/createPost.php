@@ -15,7 +15,11 @@ else {
 
 // Page content goes here
     ?>
-
+    <style type="text/css">
+        head{
+            background-color: #1f3c52;
+        }
+    </style>
     <div class="container top25">
         <div class="col-md-8">
             <section class="content">
@@ -35,13 +39,15 @@ else {
                     $content = $_POST['content'];
                     $startDate = $_POST['startDate'];
                     $endDate = $_POST['endDate'];
+                    $image = $_POST['image'];
+
 
                     // This SQL uses double quotes for the query string.  If a field is not a number (it's a string or a date) it needs
                     // to be enclosed in single quotes.  Note that right after values is a ( and a single quote.  That single quote comes right
                     // before the value of $title.  Note also that at the end of $title is a ', ' inside of double quotes.  What this will all render
                     // That will generate this piece of SQL:   values ('title text here', 'content text here', '2017-02-01 00:00:00'  and so
                     // on until the end of the sql command.
-                    $sql = "insert into posts (title, content, startDate, endDate) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "')";
+                    $sql = "insert into posts (title, content, startDate, endDate, image) values ('" . $title . "', '" . $content . "', '" . $startDate . "', '" . $endDate . "', '" . $image . "' )";
                     $db->query($sql);
                 }
                 ?>
@@ -57,10 +63,12 @@ else {
                 <center>Current and active posts.</center>
                 </p>
                 <?php
+
                 $sql = 'select * from posts';
                 $posts = $db->query($sql);
                 // Loop through the posts and display them
                 while ($post = $posts->fetch()) {
+                    $post['content'] = substr($post['content'], 0, 50) . '...';
                     // Call the method to create the layout for a post
                     News::story($post);
                 }

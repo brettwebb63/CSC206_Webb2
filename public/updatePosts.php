@@ -38,8 +38,9 @@ Layout::pageTop();
                     $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
                     $startDate = htmlspecialchars($_POST['startDate'], ENT_QUOTES);
                     $endDate = htmlspecialchars($_POST['endDate'], ENT_QUOTES);
+                    $image = $_POST['image'];
 
-                    $sql = "update posts set title = '$title', content = '$content', startDate = '$startDate', endDate = '$endDate' where id = $id;";
+                    $sql = "update posts set title = '$title', content = '$content', startDate = '$startDate', endDate = '$endDate', image = '$image' where id = $id;";
                     $result = $db->query($sql);
                     header('Location: index.php');
                 }

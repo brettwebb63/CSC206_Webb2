@@ -26,15 +26,26 @@ class news
      */
     public static function story($data)
     {
+
         $title = $data['title'];
         $content = $data['content'];
         $startdate = $data{'startDate'};
+       // $pic = $_SERVER['DOCUMENT_ROOT'] . '/pictures/' . $data['image'];
+        $image = $data{'image'};
+
+        //if (is_file($pic)) {
+           // $image = '<img src = "/pictures/' . $data['image'];
+        //} else {
+         //   $image = '';
+        //}
 
         // $author = $data['firstname'] . ' ' . $data['lastname'];
+
         echo <<<story
         <div class="top10">
             <h3>$title</h3>
             <h5> Posted on $startdate </h5>
+            <img src="/pictures/$image" height="250" width= "500">
             <p>$content</p>
         </div>        
 story;
@@ -99,7 +110,7 @@ story;
             $rowHTML .= '<td>' . $cell . '</td>';
         }
 
-        $rowHTML .= '<td><a href="updateUsers.php?id='.$id.'">Update </a> | <a href="viewPosts.php?id='.$id.'"> View </a> | <a href="deleteUser.php?id='.$id.'">Delete</a></td>';
+        $rowHTML .= '<td><a href="updateUsers.php?id='.$id.'">Update </a> | <a href="deleteUser.php?id='.$id.'">Delete</a></td>';
         $rowHTML .= '</tr>';
         return $rowHTML;
     }
